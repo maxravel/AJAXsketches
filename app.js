@@ -33,37 +33,98 @@
 // };
 
 
-document.querySelector('#button').addEventListener('click', loadData);
+
+//*************************EXAMPLE ONE
+
+// document.querySelector('#button').addEventListener('click', loadData);
+
+// function loadData(){
+
+//     xhr = new XMLHttpRequest();
+
+//     xhr.open('GET', 'data/tasks.json', true);
+
+//     // xhr.onreadystatechange = function(){
+//     //     console.log(xhr.readyState);
+//     // }
+
+//     //optional for loaders/spinners
+//     xhr.onprogress = function(){
+//         console.log(xhr.readyState);
+//     }
+
+//     xhr.onload = function(){
+//         console.log(xhr.readyState);
+//         if(this.status === 200){
+//             console.log(this.responseText);
+//             document.querySelector('#output').innerHTML = this.responseText;
+//         }
+//     }
+
+//     xhr.onerror = function(){
+//         console.log('request error');
+//     }
+    
+//     xhr.send();
+
+// }
 
 
-function loadData(){
 
-    xhr = new XMLHttpRequest();
+//*************************EXAMPLE TWO
 
-    xhr.open('GET', 'data/tasks.json', true);
-
-    // xhr.onreadystatechange = function(){
-    //     console.log(xhr.readyState);
-    // }
-
-    //optional for loaders/spinners
-    xhr.onprogress = function(){
-        console.log(xhr.readyState);
-    }
-
+document.querySelector('#btn1').addEventListener('click', loadCustomer);
+function loadCustomer(e){
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', 'data/customer.json', true);
+    xhr.send();
     xhr.onload = function(){
-        console.log(xhr.readyState);
         if(this.status === 200){
-            console.log(this.responseText);
-            document.querySelector('#output').innerHTML = this.responseText;
+            // console.log(this.responseText);
+
+            const customer = JSON.parse(this.responseText);
+            // console.log(customer);
+
+            const output = `
+            <ul>
+                <li>ID: ${customer.id}</li>
+                <li>Name: ${customer.name}</li>
+                <li>Company: ${customer.company}</li>
+                <li>Phone: ${customer.phone}</li>
+            </ul>
+            `
+            document.querySelector('#customer').innerHTML =  output;
         }
     }
+}
 
-    xhr.onerror = function(){
-        console.log('request error');
-    }
-    
+
+//CUSTOMERS***************************8
+document.querySelector('#btn2').addEventListener('click', loadCustomers);
+function loadCustomers(e){
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', 'data/customers.json', true);
     xhr.send();
+    xhr.onload = function(){
+        if(this.status === 200){
+            // console.log(this.responseText);
 
+            const customers = JSON.parse(this.responseText);
+            // console.log(customer);
 
+            let output ='' 
+            customers.forEach(function(customer){
+                output+=`
+                <ul>
+                    <li>ID: ${customer.id}</li>
+                    <li>Name: ${customer.name}</li>
+                    <li>Company: ${customer.company}</li>
+                    <li>Phone: ${customer.phone}</li>
+                </ul>
+                `
+            });
+            
+            document.querySelector('#customers').innerHTML =  output;
+        }
+    }
 }
