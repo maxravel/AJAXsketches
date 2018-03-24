@@ -128,3 +128,21 @@ function loadCustomers(e){
         }
     }
 }
+
+
+//JSON Crash Course *********************************
+
+var person = {
+    name:'john',
+    age: 39,
+    adress: {
+        street: "lawinowa",
+        house: 34,
+    },
+    colors: ["red","yellow"]
+}
+
+person = JSON.stringify(person); // - to json ""
+person = JSON.parse(person); // - to object
+
+console.log(person);
