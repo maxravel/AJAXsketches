@@ -146,3 +146,18 @@ person = JSON.stringify(person); // - to json ""
 person = JSON.parse(person); // - to object
 
 console.log(person);
+
+
+
+//***********************FETCH
+document.querySelector('#fetch').addEventListener('click', loadJson);
+function loadJson(){
+    fetch('data/customers.json')
+        .then(function(res){
+            return res.json();
+        })
+        .then(function(data){
+            console.log(data[0].name);
+        });
+}
+
