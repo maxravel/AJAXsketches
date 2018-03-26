@@ -161,11 +161,9 @@ function loadJson(){
             console.log(data);
             const firstTry = data.filter(z => z.id ==="rat");
             console.log(firstTry);
-            const ratunkowa = JSON.parse(data);
-            const secondTry = ratunkowa.filter(z => z.id ==="rat");
-            console.log(secondTry);
-
-
+            // const ratunkowa = JSON.parse(this.responseText);
+            // const secondTry = ratunkowa.filter(z => z.id ==="rat");
+            // console.log(secondTry);
         });
 }
 
