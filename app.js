@@ -152,12 +152,13 @@ console.log(person);
 //***********************FETCH
 document.querySelector('#fetch').addEventListener('click', loadJson);
 function loadJson(){
-    fetch('data/customers.json')
+    fetch('data/medtasks.json')
         .then(function(res){
             return res.json();
         })
         .then(function(data){
-            console.log(data[0].name);
+            console.log(data[0].answer1);
+            console.log(data);
         });
 }
 
