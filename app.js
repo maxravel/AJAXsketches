@@ -169,35 +169,35 @@
 
 
 //************************WORKING WITH EXTERNAL API
-document.querySelector('#loadJokes').addEventListener('click', loadJokes);
+// document.querySelector('#loadJokes').addEventListener('click', loadJokes);
 
-function loadJokes(){
-    const xhr = new XMLHttpRequest();
-    const number = document.querySelector('#jokesNumber').value;
-    xhr.open('GET',	
-    `http://api.icndb.com/jokes/random/${number}`, true);        
+// function loadJokes(){
+//     const xhr = new XMLHttpRequest();
+//     const number = document.querySelector('#jokesNumber').value;
+//     xhr.open('GET',	
+//     `http://api.icndb.com/jokes/random/${number}`, true);        
     
-    xhr.onload = function(){
-        if(this.status ===200){
-            const response = JSON.parse(this.responseText);
+//     xhr.onload = function(){
+//         if(this.status ===200){
+//             const response = JSON.parse(this.responseText);
 
-            let output = '';
+//             let output = '';
 
-            if(response.type === 'success'){
+//             if(response.type === 'success'){
 
-                response.value.forEach(function(joke){
-                    output += `<br><br>${joke.joke}`;
-                });   
-            }
+//                 response.value.forEach(function(joke){
+//                     output += `<br><br>${joke.joke}`;
+//                 });   
+//             }
 
-            else{
-                console.log('something went wrong')
-            }
+//             else{
+//                 console.log('something went wrong')
+//             }
          
-            document.querySelector("#jokes").innerHTML = output;
-        }
-    }
+//             document.querySelector("#jokes").innerHTML = output;
+//         }
+//     }
 
-    xhr.send(); 
+//     xhr.send(); 
     
-}
+// }
