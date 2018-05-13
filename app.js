@@ -19,7 +19,7 @@
 //     // });
 //     // console.log("test");
 
-//     //callbacks
+//     //**********************CALLBACKS****************
 //     // var fruits = ['mango', 'avocado', 'apple'];
 //     // fruits.forEach(function(val){
 //     //     console.log(val);
@@ -200,4 +200,55 @@
 
 //     xhr.send(); 
     
+// }
+
+
+
+//******************************** PROMISES ********************
+// window.onload = function(){
+
+//     function get(url){
+//         return new Promise(function(resolve, reject){
+//             //resolve - success; reject - error;
+//             var xhttp = new XMLHttpRequest();
+//             xhttp.open("GET",url,true);
+//             xhttp.onload = function(){
+//                 if(xhttp.status==200){
+//                     resolve(JSON.parse(xhttp.response));
+//                 }
+//                 else{reject(xhttp.statusText);}
+//             };
+//             xhttp.onerror = function(){
+//                 reject(xhttp.statusText);
+//             };
+//             xhttp.send();
+
+//         });
+//     }
+
+//     var promise = get("data/customer.json");
+//     promise.then(function(customer){
+//         console.log(customer);
+//         return get("data/customers.json");
+//     }).then(function(customers){
+//         console.log(customers);
+//         return get("data/medtasks.json");
+//     }).then(function(medtasks){
+//         console.log(medtasks);
+//     }).catch(function(error){
+//         console.log(error);
+//     });
+
+
+//     //***************jQuery method
+//     $.get("data/customer.json").then(function(a){
+//         console.log(a);
+//         return $.get("data/customers.json");
+//     }).then(function(b){
+//         console.log(b);
+//         return $.get("data/medtasks.json");
+//     }).then(function(c){
+//         console.log(c);
+//     })
+
 // }
