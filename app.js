@@ -252,3 +252,37 @@
 //     })
 
 // }
+
+//************************GENERATORS ************************/
+// window.onload = function(){
+
+//     //funtion* - generator
+//     function* gen(){
+//         var x = yield 10;
+//         console.log(x)
+//     }
+
+//     var myGen = gen();
+//     console.log(myGen.next());
+//     console.log(myGen.next(10));
+// }
+
+//ECMA6 Take
+window.onload = function(){
+
+    function* gen(){
+        //when first myGen.next(): yield stops function after console.log("abc");
+        yield console.log("abc");
+        //when second myGen.next(): yield stops function after console.log("def");
+        yield console.log("def");
+        //when third myGen.next(): yield stops function after console.log("ghi");
+        yield console.log("ghi");
+        console.log("final");
+    }
+
+    var myGen = gen();
+    myGen.next();
+    myGen.next();
+    myGen.next();
+    
+}
