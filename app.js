@@ -277,10 +277,12 @@ window.onload = function(){
         yield console.log("def");
         //when third myGen.next(): yield stops function after console.log("ghi");
         yield console.log("ghi");
+        //when fourth myGen.next(): console.log final works:
         console.log("final");
     }
 
     var myGen = gen();
+    myGen.next();
     myGen.next();
     myGen.next();
     myGen.next();
