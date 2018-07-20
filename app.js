@@ -268,23 +268,150 @@
 // }
 
 //ECMA6 Take
-window.onload = function(){
+// window.onload = function(){
 
-    function* gen(){
-        //when first myGen.next(): yield stops function after console.log("abc");
-        yield console.log("abc");
-        //when second myGen.next(): yield stops function after console.log("def");
-        yield console.log("def");
-        //when third myGen.next(): yield stops function after console.log("ghi");
-        yield console.log("ghi");
-        //when fourth myGen.next(): console.log final works:
-        console.log("final");
-    }
+//     function* gen(){
+//         //when first myGen.next(): yield stops function after console.log("abc");
+//         yield console.log("abc");
+//         //when second myGen.next(): yield stops function after console.log("def");
+//         yield console.log("def");
+//         //when third myGen.next(): yield stops function after console.log("ghi");
+//         yield console.log("ghi");
+//         //when fourth myGen.next(): console.log final works:
+//         console.log("final");
+//     }
 
-    var myGen = gen();
-    myGen.next();
-    myGen.next();
-    myGen.next();
-    myGen.next();
+//     var myGen = gen();
+//     myGen.next();
+//     myGen.next();
+//     myGen.next();
+//     myGen.next();
     
+// }
+
+
+
+//*********************ASYNCHRONOUS CALLBACK
+
+// const posts = [
+//     {title:"post one",text:"this is post one"},
+//     {title:"post two",text:"this is post two"}
+// ];
+
+// function getPosts(){
+//     setTimeout(()=>{
+//         let output = '';
+//         posts.forEach((post,index)=>{
+//             output += `<li>${post.title}</li>`;
+//         });
+//         document.body.innerHTML = output;
+//     },1000);
+// }
+
+// // getPosts();
+
+// function createPost(post, callback){
+//     setTimeout(()=>{
+//         posts.push(post);
+//         callback();
+//     },2000);
+// }
+
+// createPost({title:"post three",text:"this is post three"}, getPosts);
+
+
+
+//*******************SAME EXAMPLE WITH PROMISES
+
+// const posts = [
+//     {title:"post one",text:"this is post one"},
+//     {title:"post two",text:"this is post two"}
+// ];
+
+// function getPosts(){
+//     setTimeout(()=>{
+//         let output = '';
+//         posts.forEach((post,index)=>{
+//             output += `<li>${post.title}</li>`;
+//         });
+//         document.body.innerHTML = output;
+//     },1000);
+// }
+
+// function createPost(post, callback){
+//     return new Promise((resolve,reject) => {
+//         setTimeout(()=>{
+//             posts.push(post);
+//             const error = false;
+//             if(!error){
+//                 resolve();
+//             }
+//             else{
+//                 reject('Error: Something went wrong.');
+//             }
+//         },2000);
+//     });   
+// }
+
+// createPost({title:"post three",text:"this is post three"})
+//     .then(getPosts)
+//     .catch(err => console.log(err));
+
+
+//Promise.all
+// const promise1 = Promise.resolve("hello world");
+// const promise2 = 10;
+// const promise3 = new Promise((resolve,reject)=>setTimeout(resolve,2000,"goodbye"));
+// const promise4 = fetch("https://jsonplaceholder.typicode.com/users").then(res=>res.json());
+
+// Promise.all([promise1,promise2,promise3,promise4]).then(((values)=>console.log(values)));
+
+
+
+//*********************ASYNC/AWAIT
+// const posts = [
+//     {title:"post one",text:"this is post one"},
+//     {title:"post two",text:"this is post two"}
+// ];
+
+// function getPosts(){
+//     setTimeout(()=>{
+//         let output = '';
+//         posts.forEach((post,index)=>{
+//             output += `<li>${post.title}</li>`;
+//         });
+//         document.body.innerHTML = output;
+//     },1000);
+// }
+
+// function createPost(post, callback){
+//     return new Promise((resolve,reject) => {
+//         setTimeout(()=>{
+//             posts.push(post);
+//             const error = false;
+//             if(!error){
+//                 resolve();
+//             }
+//             else{
+//                 reject('Error: Something went wrong.');
+//             }
+//         },2000);
+//     });   
+// }
+
+
+// async function init(){
+//     await createPost({title:"post three",text:"this is post three"});
+//     getPosts();
+// };
+
+// init();
+
+//Async/Await + fetch
+async function fetchUsers(){
+    const res = await fetch("https://jsonplaceholder.typicode.com/users");
+    const data = await res.json();
+    console.log(data);
 }
+
+fetchUsers();
