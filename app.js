@@ -408,10 +408,24 @@
 // init();
 
 //Async/Await + fetch
-async function fetchUsers(){
-    const res = await fetch("https://jsonplaceholder.typicode.com/users");
-    const data = await res.json();
-    console.log(data);
-}
+// async function fetchUsers(){
+//     const res = await fetch("https://jsonplaceholder.typicode.com/users");
+//     const data = await res.json();
+//     console.log(data);
+// }
 
-fetchUsers();
+// fetchUsers();
+
+// async function medtasksLoad(){
+//     const res = await fetch("data/medtasks.json");
+//     const data = await res.json();
+//     data.forEach(function(question){
+//         console.log(question.task);
+//     })
+// }
+
+// medtasksLoad();
+
+
+
+//*****************FETCH API */
