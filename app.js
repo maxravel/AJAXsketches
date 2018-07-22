@@ -416,15 +416,15 @@
 
 // fetchUsers();
 
-// async function medtasksLoad(){
-//     const res = await fetch("data/medtasks.json");
-//     const data = await res.json();
-//     data.forEach(function(question){
-//         console.log(question.task);
-//     })
-// }
+async function medtasksLoad(){
+    const res = await fetch("data/medtasks.json");
+    const data = await res.json();
+    data.forEach(function(question){
+        console.log(question.task);
+    })
+}
 
-// medtasksLoad();
+medtasksLoad();
 
 
 
