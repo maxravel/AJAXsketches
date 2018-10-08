@@ -1,34 +1,35 @@
 // window.onload = function(){
 
-//     //vanilla js
-//     var http = new XMLHttpRequest();
+    // // VANILLA JS*********************
+    // var http = new XMLHttpRequest();
 
-//     http.onreadystatechange = function(){
-//         if(http.readyState == 4 && http.status == 200){
-//             console.log(JSON.parse(http.response));
-//         }
-//     };
+    // http.onreadystatechange = function(){
+    //     if(http.readyState == 4 && http.status == 200){
+    //         console.log(JSON.parse(http.response));
+    //     }
+    // };
 
-//     http.open('GET', 'data/tasks.json', true);
-//     http.send();
-//     //console.log(http);
+    // http.open('GET', 'data/tasks.json', true);
+    // http.send();
+    // console.log(http);
 
-//     //jQuery method
-//     // $.get('data/tasks.json', function(data){
-//     //     console.log(data);
-//     // });
-//     // console.log("test");
+    //jQuery method*************************8
+    // $.get('data/tasks.json', function(data){
+    //     console.log(data);
+    // });
+    // console.log("test");
 
-//     //**********************CALLBACKS****************
-//     // var fruits = ['mango', 'avocado', 'apple'];
-//     // fruits.forEach(function(val){
-//     //     console.log(val);
-//     // });
+    //**********************CALLBACKS****************
+    // var fruits = ['mango', 'avocado', 'apple'];
+    // fruits.forEach(function(val){
+    //     console.log(val);
+    // });
 
-//     function callbackFunction(data){
-//         console.log(data);
-//     }
-//     $.get('data/tasks.json', callbackFunction);
+    // function callbackFunction(data){
+    //     console.log(data);
+    // }
+    // $.get('data/tasks.json', callbackFunction);
+   
 
 // };
 
@@ -43,9 +44,9 @@
 
 //     xhr.open('GET', 'data/tasks.json', true);
 
-//     // xhr.onreadystatechange = function(){
-//     //     console.log(xhr.readyState);
-//     // }
+//     xhr.onreadystatechange = function(){
+//         console.log(xhr.readyState);
+//     }
 
 //     //optional for loaders/spinners
 //     xhr.onprogress = function(){
@@ -149,22 +150,22 @@
 
 
 //***********************FETCH******************
-// document.querySelector('#fetch').addEventListener('click', loadJson);
-// function loadJson(){
-//     fetch('data/medtasks.json')
-//         .then(function(res){
-//             return res.json();
-//         })
-//         .then(function(data){
-//             console.log(data[0].answer1);
-//             console.log(data);
-//             const firstTry = data.filter(z => z.id ==="rat");
-//             console.log(firstTry);
-//             // const ratunkowa = JSON.parse(this.responseText);
-//             // const secondTry = ratunkowa.filter(z => z.id ==="rat");
-//             // console.log(secondTry);
-//         });
-// }
+document.querySelector('#fetch').addEventListener('click', loadJson);
+function loadJson(){
+    fetch('data/medtasks.json')
+        .then(function(res){
+            return res.json();
+        })
+        .then(function(data){
+            console.log(data[0].answer1);
+            console.log(data);
+            const firstTry = data.filter(z => z.id ==="rat");
+            console.log(firstTry);
+            // const ratunkowa = JSON.parse(this.responseText);
+            // const secondTry = ratunkowa.filter(z => z.id ==="rat");
+            // console.log(secondTry);
+        });
+}
 
 
 
@@ -416,15 +417,17 @@
 
 // fetchUsers();
 
-async function medtasksLoad(){
-    const res = await fetch("data/medtasks.json");
-    const data = await res.json();
-    data.forEach(function(question){
-        console.log(question.task);
-    })
-}
 
-medtasksLoad();
+
+// async function medtasksLoad(){
+//     const res = await fetch("data/medtasks.json");
+//     const data = await res.json();
+//     data.forEach(function(question){
+//         console.log(question.answer1);
+//     })
+// }
+
+// medtasksLoad();
 
 
 
