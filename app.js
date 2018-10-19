@@ -150,22 +150,22 @@
 
 
 //***********************FETCH******************
-document.querySelector('#fetch').addEventListener('click', loadJson);
-function loadJson(){
-    fetch('data/medtasks.json')
-        .then(function(res){
-            return res.json();
-        })
-        .then(function(data){
-            console.log(data[0].answer1);
-            console.log(data);
-            const firstTry = data.filter(z => z.id ==="rat");
-            console.log(firstTry);
-            // const ratunkowa = JSON.parse(this.responseText);
-            // const secondTry = ratunkowa.filter(z => z.id ==="rat");
-            // console.log(secondTry);
-        });
-}
+// document.querySelector('#fetch').addEventListener('click', loadJson);
+// function loadJson(){
+//     fetch('data/medtasks.json')
+//         .then(function(res){
+//             return res.json();
+//         })
+//         .then(function(data){
+//             console.log(data[0].answer1);
+//             console.log(data);
+//             const firstTry = data.filter(z => z.id ==="rat");
+//             console.log(firstTry);
+//             // const ratunkowa = JSON.parse(this.responseText);
+//             // const secondTry = ratunkowa.filter(z => z.id ==="rat");
+//             // console.log(secondTry);
+//         });
+// }
 
 
 
@@ -202,6 +202,46 @@ function loadJson(){
 //     xhr.send(); 
     
 // }
+
+
+
+//************************WORKING WITH COINMARKETCAP EXTERNAL API
+document.querySelector('#countValue').addEventListener('click', countingV);
+
+function countingV(){
+    const xhr = new XMLHttpRequest();
+    const number = document.querySelector('#coinAmount').value;
+    xhr.open('GET',	
+    'https://api.coinmarketcap.com/v2/ticker/1214/', true);        
+    
+    xhr.onload = function(){
+        if(this.status ===200){
+            const response = JSON.parse(this.responseText);
+
+            let output = '';
+            console.log(response.data.quotes.USD.price);
+
+            // if(response.type === 'success'){
+
+            //     // response.value.forEach(function(joke){
+            //     //     output += `<br><br>${joke.joke}`;
+            //     // });   
+            //     console.log(response);
+            // }
+
+            // else{
+            //     console.log('something went wrong')
+            // }
+         
+            document.querySelector("#outputValue").innerHTML = number*response.data.quotes.USD.price+"$";
+        }
+    }
+
+    xhr.send(); 
+    
+}
+
+
 
 
 
