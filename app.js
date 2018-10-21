@@ -218,8 +218,8 @@ function countingV(){
         if(this.status ===200){
             const response = JSON.parse(this.responseText);
 
-            let output = '';
-            console.log(response.data.quotes.USD.price);
+            //let output = '';
+            //console.log(response.data.quotes.USD.price);
 
             // if(response.type === 'success'){
 
@@ -233,11 +233,40 @@ function countingV(){
             //     console.log('something went wrong')
             // }
          
-            document.querySelector("#outputValue").innerHTML = number*response.data.quotes.USD.price+"$";
+            document.querySelector("#outputValueDolars").innerHTML = Math.round(number*response.data.quotes.USD.price*100)/100+"$";
         }
     }
 
     xhr.send(); 
+
+    const xhr2 = new XMLHttpRequest();
+    xhr2.open('GET',	
+    'https://bitbay.net/API/Public/LSKPLN/ticker.json', true);        
+    
+    xhr2.onload = function(){
+        if(this.status ===200){
+            const response = JSON.parse(this.responseText);
+
+            //let output = '';
+            //console.log(response.data.quotes.USD.price);
+
+            // if(response.type === 'success'){
+
+            //     // response.value.forEach(function(joke){
+            //     //     output += `<br><br>${joke.joke}`;
+            //     // });   
+            //     console.log(response);
+            // }
+
+            // else{
+            //     console.log('something went wrong')
+            // }
+         
+            document.querySelector("#outputValuePLN").innerHTML = Math.round(number*response.last*100)/100+"PLN";
+        }
+    }
+
+    xhr2.send(); 
     
 }
 
