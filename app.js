@@ -211,8 +211,10 @@ document.querySelector('#countValue').addEventListener('click', countingV);
 function countingV(){
     const xhr = new XMLHttpRequest();
     const number = document.querySelector('#coinAmount').value;
-    xhr.open('GET',	
-    'https://api.coinmarketcap.com/v2/ticker/1214/', true);        
+    const cur = document.querySelector("#currency").value;
+    var id="";
+    if(cur ==="LSK"){id=1214}
+    xhr.open('GET',	`https://api.coinmarketcap.com/v2/ticker/${id}/`, true);        
     
     xhr.onload = function(){
         if(this.status ===200){
