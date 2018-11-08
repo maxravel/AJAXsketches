@@ -209,43 +209,46 @@
 document.querySelector('#countValue').addEventListener('click', countingV);
 
 function countingV(){
-    const xhr = new XMLHttpRequest();
+
     const number = document.querySelector('#coinAmount').value;
     const cur = document.querySelector("#currency").value;
     var id="";
-    if(cur === "lsk" || cur === "LSK" || cur === "Lsk"){id=1214}
-    xhr.open('GET',	`https://api.coinmarketcap.com/v2/ticker/${id}/`, true);  
-    //xhr.open('GET',	`https://api.coinpaprika.com/v1/ticker`, true);
-    console.log(cur);
-    xhr.onload = function(){
+    const xhl = new XMLHttpRequest();
+    xhl.open('GET', 'https://api.coinmarketcap.com/v2/listings/', true);
+    xhl.onload = function(){
         if(this.status ===200){
             const response = JSON.parse(this.responseText);
-
-            // console.log(response);
-            //response.data.forEach(function(x){x===x.})
-            document.querySelector("#outputValueDolars").innerHTML = Math.round(number*response.data.quotes.USD.price*100)/100+"$";
+            response.data.forEach(function(item){
+                if(item.symbol===cur.toUpperCase()){id=item.id}
+            })
         }
+
+        //after receiving id of coin (due to symbol) requesting price of amount of coin
+        const xhr = new XMLHttpRequest();
+ 
+        xhr.open('GET',	`https://api.coinmarketcap.com/v2/ticker/${id}/`, true);  
+        xhr.onload = function(){
+            if(this.status ===200){
+                const response = JSON.parse(this.responseText);
+                document.querySelector("#outputValueDolars").innerHTML = Math.round(number*response.data.quotes.USD.price*100)/100+"$";
+            }
+        }
+        xhr.send(); 
+
     }
-
-    xhr.send(); 
-
+    xhl.send();
 
     const xhr2 = new XMLHttpRequest();
-    xhr2.open('GET', 'https://bitbay.net/API/Public/LSKPLN/ticker.json', true);        
-    
+    xhr2.open('GET', `https://bitbay.net/API/Public/${cur.toUpperCase()}PLN/ticker.json`, true);        
     xhr2.onload = function(){
         if(this.status ===200){
-            const response = JSON.parse(this.responseText);
-         
+            const response = JSON.parse(this.responseText); 
             document.querySelector("#outputValuePLN").innerHTML = Math.round(number*response.last*100)/100+"PLN";
         }
     }
-
     xhr2.send(); 
     
 }
-
-
 
 
 
